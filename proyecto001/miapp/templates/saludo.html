@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    {{titulo}}
+{% endblock %}
+
+{% block content %}
+    <h1 class="title">Bienvenido al curso LP3</h1>
+    <h2>{{autor_saludo}}</h2>
+    <h3>Python Django :D</h3>
+    {{ block.super }}
+
+{% endblock %}
