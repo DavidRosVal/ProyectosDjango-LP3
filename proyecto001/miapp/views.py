@@ -60,8 +60,8 @@ def rango(request):
     return render(request, 'rango.html', {
         'titulo':'Rango',
         'a':a,
-        'b':b
-
+        'b':b,
+        'rango_numero':rango_numeros
     })
 
 
