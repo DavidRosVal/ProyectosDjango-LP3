@@ -22,17 +22,26 @@ layout = """
     <hr/>
 """
 
+
 def index(request):
+    estudiantes = ['Isabella Caballero',
+                   'Alejandro Hermitaño',
+                   'Joan Palomino',
+                   'Pierre Bernaola']
+
     return render(request, 'index.html', {
-        'titulo':'Inicio',
-        'mensaje':'Proyecto Web con Django'
+        'titulo': 'Inicio',
+        'mensaje': 'Proyecto Web con Django',
+        'estudiantes':estudiantes
     })
+
 
 def saludo(request):
     return render(request, 'saludo.html', {
-        'titulo':'Saludo',
-        'autor_saludo':'David Rosado Valerio'
+        'titulo': 'Saludo',
+        'autor_saludo': 'David Rosado Valerio'
     })
+
 
 def rango(request):
     a = 10
@@ -48,16 +57,17 @@ def rango(request):
     resultado += "</ul>"
     return HttpResponse(layout + resultado)
 
-def rango2(request,a=0,b=100):
-    if a>b:
+
+def rango2(request, a=0, b=100):
+    if a > b:
         return redirect('rango2', a=b, b=a)
     resultado = f"""
         <h2>Numeros de [{a}, {b}]</h2>
         Resultado: <br>
         <ul>
     """
-    while a<=b:
+    while a <= b:
         resultado += f"<li> {a} </li>"
-        a+=1
+        a += 1
     resultado += "</ul"
     return HttpResponse(layout + resultado)
