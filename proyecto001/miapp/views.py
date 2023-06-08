@@ -51,11 +51,18 @@ def rango(request):
         Resultado: <br>
         <ul>
     """
+    rango_numeros = []
     while a <= b:
         resultado += f"<li> {a} </li>"
+        rango_numeros.append(a)
         a += 1
     resultado += "</ul>"
-    return HttpResponse(layout + resultado)
+    return render(request, 'rango.html', {
+        'titulo':'Rango',
+        'a':a,
+        'b':b
+
+    })
 
 
 def rango2(request, a=0, b=100):

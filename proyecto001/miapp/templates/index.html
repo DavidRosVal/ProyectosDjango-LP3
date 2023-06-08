@@ -22,6 +22,8 @@ En esta página se mostrará la bienvenida al sistema
     <ul>
         {% for estudiante in estudiantes %}
             <li>{{forloop.counter}}. {{estudiante}}</li>
+        {% empty %}
+            <p>No hay estudiantes registrados</p>
         {% endfor %}
     </ul>
     <p>Año: 2023</p>
