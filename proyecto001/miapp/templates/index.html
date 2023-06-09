@@ -4,6 +4,8 @@
     {{titulo}}
 {% endblock %}
 
+
+
 {% block content %}
 <!--Comentario en HTML-->
 {% comment 'Datos de la página index' %}
@@ -17,7 +19,9 @@ En esta página se mostrará la bienvenida al sistema
         <strong>El Mensaje no tiene contenido</strong> 
     {% endif %}  
 
-    {% include 'listado_estudiantesregistrados.html' with encabezado='Estudiantes Registrados' %}
+    {% include 'filtros.html' with encabezado="Uso de filtros" %}
+{% comment %}     {% include 'listado_estudiantesregistrados.html' with encabezado='Estudiantes Registrados' %} {% endcomment %}
 
     <p>Año: 2023</p>
 {% endblock %}
+
