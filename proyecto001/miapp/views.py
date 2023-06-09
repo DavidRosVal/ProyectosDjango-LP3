@@ -46,17 +46,7 @@ def saludo(request):
 def rango(request):
     a = 10
     b = 20
-    resultado = f"""
-        <h2>Numeros de [{a}, {b}]</h2>
-        Resultado: <br>
-        <ul>
-    """
-    rango_numeros = []
-    while a <= b:
-        resultado += f"<li> {a} </li>"
-        rango_numeros.append(a)
-        a += 1
-    resultado += "</ul>"
+    rango_numeros = range(a, b + 1)
     return render(request, 'rango.html', {
         'titulo':'Rango',
         'a':a,
