@@ -24,16 +24,16 @@
     <nav>
         <ul>
             <li>
-                <a href="/inicio">Inicio</a>
+                <a href="{% url 'inicio' %}">Inicio</a>
             </li>
             <li>
-                <a href="/saludo">Mensaje de saludo</a>
+                <a href="{% url 'saludo' %}">Mensaje de saludo</a>
             </li>
             <li>
-                <a href="/rango">Mostrar números [a,b]</a>
+                <a href="{% url 'rango' %}">Mostrar números [a,b]</a>
             </li>
             <li>
-                <a href="/rango2/10/15"> Mostrar Números [10,15]</a>
+                <a href="{% url 'rango2' %}"> Mostrar Números [10,15]</a>
             </li>
         </ul>
     </nav>
@@ -52,7 +52,7 @@
         </div>
     </div>
     <footer>
-        UNTELS - Lenguaje de Programación III &copy; David Rosado
+        UNTELS - Lenguaje de Programación III &copy; David Rosado - {% now "d/m/Y h:m:s" %}
     </footer>
 </body>
 </html>
