@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render, HttpResponse, redirect
 from miapp.models import Articulo
+from django.db.models import Q
 
 # Create your views here.
 layout = """
@@ -105,3 +106,8 @@ def listar_articulos(request):
         'articulos':articulos,
         'titulo':'Listado de Articulos'
     })
+
+def eliminar_articulo(request, id):
+    articulo = Articulo.objects.get(pk=id)
+    articulo.delete()
+    return redirect('listar_articulos')
