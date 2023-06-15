@@ -79,3 +79,29 @@ def crear_articulo(request):
     articulo.save()
     return HttpResponse(f"Articulo creado: {articulo.titulo} - {articulo.contenido}")
 
+def buscar_articulo(request, idarticulo):
+    try:
+        articulo = Articulo.objects.get(id=idarticulo)
+        resultado = f"""Articulo:
+        <br> <strong>ID:</strong> {articulo.id}
+        <br> <strong>Titulo:</strong> {articulo.titulo}
+        <br> <strong>Contenido:</strong> {articulo.contenido}
+        """
+    except:
+        resultado = "<h1>Articulo No Encontrado</h1>"
+    return HttpResponse(resultado)
+
+def editar_articulo(request,id):
+    articulo = Articulo.objects.get(pk=id)
+    articulo.titulo = "Enseñanza online en la UNTELS"
+    articulo.contenido = "Aula Virtual, Google Meet, Portal Académico, Google Classroom"
+    articulo.publicado = False
+    articulo.save()
+    return HttpResponse(f"Articulo Editado: {articulo.titulo} - {articulo.contenido}")
+
+def listar_articulos(request):
+    articulos = Articulo.objects.all()
+    return render(request, 'listar_articulos.html',{
+        'articulos':articulos,
+        'titulo':'Listado de Articulos'
+    })
