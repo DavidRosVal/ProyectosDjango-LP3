@@ -113,13 +113,23 @@ def eliminar_articulo(request, id):
     return redirect('listar_articulos')
 
 def save_articulo(request):
-    articulo = Articulo(
-        titulo = titulo,
-        contenido = contenido,
-        publicado = publicado
-    )
-    articulo.save()
-    return HttpResponse(f"Articulo Creado: {articulo.titulo} - {articulo.contenido}")
+    if request.method == 'POST':
+        titulo = request.POST['titulo']
+        if len(titulo)<=5:
+            return HttpResponse("<h2>El tamaño del titulo es pequeño, intente nuevamente</h2>")
+        contenido = request.POST['contenido']
+        publicado = request.POST['publicado']
+
+
+        articulo = Articulo(
+            titulo = titulo,
+            contenido = contenido,
+            publicado = publicado
+        )
+        articulo.save()
+        return HttpResponse(f"Articulo Creado: {articulo.titulo} - {articulo.contenido}")
+    else:
+        return HttpResponse("<h2>No se ha podido registrar el articulo</h2>")
 
 def create_articulo(request):
     return render(request, 'create_articulo.html')
